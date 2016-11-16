@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.etong.sms.dao.ConsumerMapper">
+  
+  	<select id="getConsumerRequest" parameterType="map" resultType="Consumer">
+  		select * from t_consumer 
+  		<where>
+  			<trim prefixOverrides="and">
+  				<if test="memberName!=null">memberName=#{memberName}</if>
+  				<if test="memberId!=null">and memberId=#{memberId}</if>
+  			</trim> 			
+  		</where>	
+  	</select>
+  </mapper>
