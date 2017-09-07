@@ -2,10 +2,7 @@ package com.etong.sms.utility;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Pattern;
 /**
  * List元素通过指定字符串分割，拼接
@@ -78,5 +75,29 @@ public class StringUtil {
 			}
 		}
 		return f;
+	}
+
+	public static void main(String[] args) {
+//		String pre_lat = "28.2320730282";
+//		String pre_lon = "112.9549992044";
+//
+//		System.out.println(Float.valueOf(pre_lat) - 28.2300730282);
+
+		String[] a = {"1","2","3","4","5"};
+
+		List<String> list = Arrays.asList(a);
+
+		LinkedList<String> set = new LinkedList<>();
+		set.addAll(list);
+		for (String index :list) {
+			if (index.equals("3") || index.equals("5")) {
+				list.remove(index);
+				set.addFirst(index);
+			}
+		}
+
+		for (String index :set) {
+			System.out.println(index);
+		}
 	}
 }
