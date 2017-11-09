@@ -4,6 +4,8 @@ import com.etong.sms.dataServer.UserServer;
 import com.etong.sms.model.User;
 import com.etong.sms.utility.SmsError;
 import com.etong.sms.utility.SmsResult;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,11 +21,19 @@ public class UserController {
 	
 	@Autowired
 	private UserServer userServer;
-	
+
+
+	@ApiOperation(value = "获取使用人员信息")
+	@ApiImplicitParam(name = "id",paramType = "query",dataType = "int", value = "userId")
 	@RequestMapping(value="/sms/user/detail")
 	@ResponseBody
 	public SmsResult getUserDetail(int id){		
 		return userServer.getSingleUser(id);
+	}
+
+	@RequestMapping("/home")
+	public String index() {
+		return "index";
 	}
 	
 	@RequestMapping(value="/sms/user/add")
